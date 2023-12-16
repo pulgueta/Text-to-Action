@@ -30,6 +30,12 @@ export const metadata: Metadata = {
 		countryName: 'Colombia',
 		locale: 'en_US',
 		type: 'website',
+		images: {
+			url: '/TTA-OG.webp',
+			alt: 'Text to Action',
+			width: 1200,
+			height: 630,
+		},
 	},
 	metadataBase: new URL('https://text-to-action.vercel.app/'),
 	alternates: {
