@@ -1,113 +1,120 @@
-import Image from 'next/image'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { prism as syntaxStyle } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { GithubIcon, TwitterIcon } from 'lucide-react';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+import { Form } from '@/components/form';
+import { ThemeSwitcher } from '@/components/theme-switcher';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+import { buttonVariants } from '@/components/ui/button';
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+const Landing = () => {
+	return (
+		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
+			<header>
+				<h1 className='scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl'>
+					Text to Action
+				</h1>
+				<p className='mt-6 leading-7'>
+					Create GitHub actions with your own words!
+				</p>
+			</header>
+			<section className='flex flex-col gap-4 rounded border bg-primary/5 p-8'>
+				<div className='flex w-full gap-4'>
+					<a
+						href='https://github.com/pulgueta/Text-to-Action'
+						target='_blank'
+						className={buttonVariants({
+							className: 'w-full',
+							variant: 'outline',
+						})}
+					>
+						<GithubIcon className='mr-2 h-4 w-4' />
+						Star on GitHub
+					</a>
+					<a
+						href='https://github.com/pulgueta/Text-to-Action'
+						target='_blank'
+						className={buttonVariants({
+							className: 'w-full',
+							variant: 'outline',
+						})}
+					>
+						<TwitterIcon className='mr-2 h-4 w-4' />
+						Twitter
+					</a>
+				</div>
+				<div className='flex gap-4'>
+					<Form />
+					<Separator orientation='vertical' />
+					<div className='flex flex-col gap-y-2'>
+						<Label className='text-lg font-medium'>
+							Your action:
+						</Label>
+						<SyntaxHighlighter
+							language='yaml'
+							showLineNumbers
+							wrapLongLines
+							customStyle={{
+								...syntaxStyle,
+								// maxWidth: '450px',
+								maxHeight: '512px',
+								fontSize: 12,
+							}}
+							style={atomDark}
+						>
+							{`name: Deploy to Firebase Hosting on merge
+"on":
+  push:
+    branches:
+      - master
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+env:
+  VITE_FIREBASE_APIKEY: VITE_FIREBASE_APIKEY
+  VITE_FIREBASE_AUTHDOMAIN: VITE_FIREBASE_AUTHDOMAIN
+  VITE_FIREBASE_PROJECTID: VITE_FIREBASE_PROJECTID
+  VITE_FIREBASE_STORAGEBUCKET: VITE_FIREBASE_STORAGEBUCKET
+  VITE_FIREBASE_MESSAGINGSENDERID: VITE_FIREBASE_MESSAGINGSENDERID
+  VITE_FIREBASE_APPID: VITE_FIREBASE_APPID
+  VITE_FIREBASE_MEASUREMENTID: VITE_FIREBASE_MEASUREMENTID
+  VITE_ADMIN_LOGIN_IMAGE: VITE_ADMIN_LOGIN_IMAGE
+  VITE_NOTFOUND_IMAGE: VITE_NOTFOUND_IMAGE
+  VITE_WHATSAPP_NUMBER: VITE_WHATSAPP_NUMBER
+  VITE_TO_EMAIL: VITE_TO_EMAIL
+  VITE_BANNER1: VITE_BANNER1
+  VITE_BANNER2: VITE_BANNER2
+  VITE_BANNER3: VITE_BANNER3
+  VITE_BANNER4: VITE_BANNER4
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: GITHUB_TOKEN }
+          firebaseServiceAccount: FIREBASE_SERVICE_ACCOUNT_XOCHICALLI_COMMERCE }
+          channelId: live
+          projectId: xochicalli-commerce
+      - name: Get URL
+        run: |
+          echo "URL_DEPLOYED=deploy_firebase_hosting_channel.outputs.details_urll
+          echo "The URL detials is deploy_firebase_hosting_channel.outputs.details_urll
+          echo "The URL is deploy_firebase_hosting_channel.outputs.urll
+    outputs:
+      url_deployed: deploy_firebase_hosting_channel.outputs.details_url
+							`}
+						</SyntaxHighlighter>
+					</div>
+				</div>
+			</section>
+			<ThemeSwitcher />
+		</main>
+	);
+};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Landing;
