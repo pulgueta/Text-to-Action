@@ -13,6 +13,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@t3-oss/env-core": "latest",
     "class-variance-authority": "latest",
     "clsx": "latest",
     "lucide-react": "latest",
@@ -23,7 +24,8 @@
     "react-dom": "latest",
     "react-syntax-highlighter": "latest",
     "tailwind-merge": "latest",
-    "tailwindcss-animate": "latest"
+    "tailwindcss-animate": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
