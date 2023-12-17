@@ -1,6 +1,8 @@
-<h1 style='font-weight: 800; font-size: 3.2rem; text-align: center;'>Text to Action</h1>
+<h1 align="center" font-size="3rem">Text to Action</h1>
+
 Create GitHub Actions by using your own words.
-<img src='./public/TTA-OG.webp' alt='Text to Action' style='border-radius: 1rem; margin: 1rem auto;' />
+
+<img src='./public/TTA-OG.webp' alt='Text to Action' align="center" />
 
 # 💻 Installation
 
