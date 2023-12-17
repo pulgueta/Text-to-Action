@@ -8,7 +8,7 @@ import { GitHubAction } from '@/components/github-action';
 
 const Landing = () => {
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-12'>
+		<main className='flex min-h-screen flex-col items-center justify-between gap-4 p-4 md:p-6'>
 			<header>
 				<h1 className='scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl'>
 					Text to Action

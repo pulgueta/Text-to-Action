@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 
 import { ThemeProvider } from '@/providers/theme-provider';
+import { ActionProvider } from '@/context/action-context';
 
 import './globals.css';
 
@@ -98,7 +99,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 					enableSystem
 					storageKey='tta_theme'
 				>
-					{children}
+					<ActionProvider>{children}</ActionProvider>
 				</ThemeProvider>
 			</body>
 		</html>
