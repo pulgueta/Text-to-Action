@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 style='font-weight: 800; font-size: 3.2rem; text-align: center;'>Text to Action</h1>
+Create GitHub Actions by using your own words.
+<img src='./public/TTA-OG.webp' alt='Text to Action' style='border-radius: 1rem; margin: 1rem auto;' />
 
-## Getting Started
+# 💻 Installation
 
-First, run the development server:
+Run the following commands:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/pulgueta/Text-to-Action
+
+cd Text-to-Acion
+
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you are not using Bun and rather you use NPM, Yarn or PNPM, follow the previous steps but instead of using Bun to install, remove the [bun.lockb](bun.lockb) file and run one of these three commands:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install # If you use NPM
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+yarn install # If you use Yarn
 
-## Learn More
+pnpm install # If you use PNPM
+```
 
-To learn more about Next.js, take a look at the following resources:
+# 📝 Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+From the [.env.example](.env.example) file, copy the name of the environment variable and paste it into your own [.env.local](.env.local) or [.env](.env) file.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Run the following command:
 
-## Deploy on Vercel
+```bash
+bun dev # If you use Bun
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm run dev # If you use NPM
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+yarn dev # If you use Yarn
+
+pnpm dev # If you use PNPM
+```
+
+That's it!
+
+## Created by [Andrés Rodríguez](https://www.linkedin.com/in/and-rodr/)
