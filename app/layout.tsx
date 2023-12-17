@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 
 import { ThemeProvider } from '@/providers/theme-provider';
@@ -100,6 +101,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 					storageKey='tta_theme'
 				>
 					<ActionProvider>{children}</ActionProvider>
+					<Analytics />
 				</ThemeProvider>
 			</body>
 		</html>

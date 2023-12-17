@@ -15,6 +15,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@t3-oss/env-core": "latest",
+    "@vercel/analytics": "latest",
     "ai": "latest",
     "class-variance-authority": "latest",
     "clsx": "latest",
