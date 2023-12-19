@@ -46,7 +46,7 @@ const Landing = () => {
 					<Form />
 					<Separator orientation='vertical' />
 					<div className='flex flex-col gap-y-2'>
-						<h3 className='text-lg font-medium'>Your action:</h3>
+						<h2 className='text-lg font-medium'>Your action:</h2>
 						<GitHubAction />
 					</div>
 				</div>
