@@ -32,6 +32,7 @@ export const GitHubAction = () => {
 				size='icon'
 				data-testid='copy-btn'
 				variant='ghost'
+				aria-label='Copy button'
 				onClick={() => {
 					return action && navigator.clipboard.writeText(action);
 				}}
