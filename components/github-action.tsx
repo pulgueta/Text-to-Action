@@ -2,8 +2,8 @@
 
 import { CopyIcon } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { prism as syntaxStyle } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { prism as syntaxStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import { useAction } from '@/context/action-context';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,7 @@ export const GitHubAction = () => {
 			<SyntaxHighlighter
 				language='yaml'
 				showLineNumbers
+				lineProps={{ className: 'className' }}
 				wrapLongLines
 				customStyle={{
 					...syntaxStyle,
@@ -29,6 +30,7 @@ export const GitHubAction = () => {
 			</SyntaxHighlighter>
 			<Button
 				size='icon'
+				data-testid='copy-btn'
 				variant='ghost'
 				onClick={() => {
 					return action && navigator.clipboard.writeText(action);
