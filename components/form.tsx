@@ -29,8 +29,8 @@ export const Form = () => {
 					{errors.text?.message}
 				</span>
 			}
-			<Button disabled={isSubmitting}>
-				{isSubmitting ? 'Translating...' : 'Translate'}
+			<Button data-testid='generate-btn' disabled={isSubmitting}>
+				{isSubmitting ? 'Generating...' : 'Generate'}
 			</Button>
 		</form>
 	);
