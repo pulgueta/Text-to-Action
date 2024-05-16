@@ -25,7 +25,7 @@ export const POST = async (req: Request) => {
 	const { text } = body.data;
 
 	const res = await gpt.chat.completions.create({
-		model: 'gpt-4-1106-preview',
+		model: 'gpt-4o',
 		stream: true,
 		temperature: 0.3,
 		messages: [
