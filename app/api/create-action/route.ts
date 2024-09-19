@@ -1,13 +1,9 @@
-import { ServerRuntime } from 'next';
-
 import { createOpenAI } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 
 import { env } from '@/env.mjs';
 import { TextToAction } from '@/schemas/tta.schema';
 import { SYSTEM_PROMPT, USER_PROMPT } from './prompt';
-
-export const runtime: ServerRuntime = 'edge';
 
 export const POST = async (req: Request) => {
 	const _body = await req.json();
