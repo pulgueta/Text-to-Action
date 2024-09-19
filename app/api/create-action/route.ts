@@ -1,13 +1,11 @@
 import { ServerRuntime } from 'next';
-import { OpenAIStream, StreamingTextResponse } from 'ai';
 
-import { OpenAI } from 'openai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
 
 import { env } from '@/env.mjs';
 import { TextToAction } from '@/schemas/tta.schema';
 import { SYSTEM_PROMPT, USER_PROMPT } from './prompt';
-
-const gpt = new OpenAI({ apiKey: env.OPENAI_KEY });
 
 export const runtime: ServerRuntime = 'edge';
 
@@ -24,10 +22,10 @@ export const POST = async (req: Request) => {
 
 	const { text } = body.data;
 
-	const res = await gpt.chat.completions.create({
-		model: 'gpt-4o',
-		stream: true,
-		temperature: 0.3,
+	const openai = createOpenAI({ apiKey: env.OPENAI_KEY });
+
+	const result = await streamText({
+		model: openai('gpt-4o'),
 		messages: [
 			{
 				role: 'system',
@@ -45,7 +43,7 @@ export const POST = async (req: Request) => {
 		],
 	});
 
-	if (!res) {
+	if (!result) {
 		return Response.json(
 			{ message: 'Error while creating your action, try again.' },
 			{
@@ -54,7 +52,5 @@ export const POST = async (req: Request) => {
 		);
 	}
 
-	const stream = OpenAIStream(res);
-
-	return new StreamingTextResponse(stream);
+	return result.toDataStreamResponse();
 };
